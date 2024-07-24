@@ -6,11 +6,12 @@ import Homepage from './pages/Homepage';
 import Blogpage from './pages/Blogpage';
 import NotFoundPage from './pages/NotFoundPage';
 import Layout from './componets/Layout';
+import Singlepage from './pages/Singlepage';
 
 function App() {
   return (
     <>
-      <header>
+      {/* <header>
         <a href='/'>home</a>
         <a href='/posts'>blog</a>
         <a href='/about'>about</a>
@@ -18,14 +19,16 @@ function App() {
         <Link to='/'>home</Link>
         <Link to='/posts'>blog</Link>
         <Link to='about'>about</Link>
-      </header>
+      </header> */}
 
       <Routes>
-        <Route path='/' element={<Layout />} />
-        <Route path='/' element={<Homepage />} />
-        <Route path='posts' element={<Blogpage />} />
-        <Route path='/about' element={<Aboutpage />} />
-        <Route path='+' element={<NotFoundPage />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path='posts' element={<Blogpage />} />
+          <Route path='postss/:id/:title' element={<Singlepage />} />
+          <Route path='/about' element={<Aboutpage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </>
   );
